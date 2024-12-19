@@ -3,7 +3,6 @@ document.getElementById('meal-form').addEventListener('submit', function(event) 
     let mealName = document.getElementById('meal-name').value;
     let mealCalories = document.getElementById('meal-calories').value;
 
-    // Send meal data to the backend
     fetch('/add-meal', {
         method: 'POST',
         headers: {
@@ -29,7 +28,6 @@ document.getElementById('exercise-form').addEventListener('submit', function(eve
     let exerciseName = document.getElementById('exercise-name').value;
     let exerciseTime = document.getElementById('exercise-time').value;
 
-    // Send exercise data to the backend
     fetch('/add-exercise', {
         method: 'POST',
         headers: {
@@ -50,7 +48,6 @@ document.getElementById('exercise-form').addEventListener('submit', function(eve
     });
 });
 
-// Fetch the summary from the backend
 function updateSummary() {
     fetch('/get-summary')
         .then(response => response.json())
@@ -61,5 +58,4 @@ function updateSummary() {
         });
 }
 
-// Initial summary fetch
 updateSummary();
