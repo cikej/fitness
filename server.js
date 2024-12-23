@@ -9,7 +9,7 @@ const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'password',
-    database: 'fitness_tracker'
+    database: 'fitness'
 });
 
 db.connect((err) => {
