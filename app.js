@@ -48,14 +48,4 @@ document.getElementById('exercise-form').addEventListener('submit', function(eve
     });
 });
 
-function updateSummary() {
-    fetch('/get-summary')
-        .then(response => response.json())
-        .then(data => {
-            let summaryOutput = document.getElementById('summary-output');
-            summaryOutput.innerHTML = `<p>Total Calories: ${data.totalCalories}</p>
-                                       <p>Total Exercise Time: ${data.totalExerciseTime} minutes</p>`;
-        });
-}
-
 updateSummary();
