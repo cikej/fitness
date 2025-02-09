@@ -69,16 +69,13 @@
                     let mealCalories = parseInt(document.getElementById("meal-calories").value);
             
                     if (mealName && mealCalories) {
-                        // Add meal to summary list
                         let listItem = document.createElement("li");
                         listItem.textContent = `${mealName}: ${mealCalories} cal`;
                         mealSummary.appendChild(listItem);
             
-                        // Update total calories
                         totalCalorieCount += mealCalories;
                         totalCalories.textContent = totalCalorieCount;
                         
-                        // Clear input fields
                         document.getElementById("meal-name").value = "";
                         document.getElementById("meal-calories").value = "";
                     }
@@ -91,16 +88,13 @@
                     let exerciseTime = parseInt(document.getElementById("exercise-time").value);
             
                     if (exerciseName && exerciseTime) {
-                        // Add meal to summary list
                         let listItem = document.createElement("li");
                         listItem.textContent = `${exerciseName}: ${exerciseTime} min`;
                         exerciseSummary.appendChild(listItem);
             
-                        // Update total calories
                         totalTimeCount += exerciseTime;
                         totalTime.textContent = totalTimeCount;
                         
-                        // Clear input fields
                         document.getElementById("exercise-name").value = "";
                         document.getElementById("exercise-time").value = "";
                     }
