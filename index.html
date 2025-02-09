@@ -11,8 +11,8 @@
         <h1>Fitness Tracker</h1>
 
         <section id="meal-section">
-            <h2>Log Your Meal</h2>
-            <form id="meal-form">
+            <h2 style="color:Tomato;">Enter Calories</h2>
+            <form id="meal-section" action='insert.php' method='post'>
                 <label for="meal-name">Meal Name:</label>
                 <input type="text" id="meal-name" required><br>
                 <label for="meal-calories">Calories:</label>
@@ -22,8 +22,8 @@
         </section>
 
         <section id="exercise-section">
-            <h2>Log Your Exercise</h2>
-            <form id="exercise-form">
+            <h2>Enter Exercise</h2>
+            <form id="exercise-form" action='insert.php' method='post'>
                 <label for="exercise-name">Exercise Name:</label>
                 <input type="text" id="exercise-name" required><br>
                 <label for="exercise-time">Time (in minutes):</label>
@@ -34,11 +34,80 @@
 
         <section id="summary-section">
             <h2>Summary</h2>
-            <div id="summary-output"></div>
+            
+            <h3>Meals Summary</h3>
+            <ul id="meal-summary"></ul>
+            
+            <h3>Exercise Summary</h3>
+            <ul id="exercise-summary"></ul>
+        
+            <h3>Total Calories</h3>
+            <p id="total-calories">0</p>
+
+            <h3>Total Time</h3>
+            <p id="total-time">0</p>
+        
+            <input type='submit' value='Add data'>
         </section>
 
-    </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const mealForm = document.querySelector("#meal-section form");
+                const exerciseForm = document.querySelector("#exercise-section form");
+                const mealSummary = document.getElementById("meal-summary");
+                const exerciseSummary = document.getElementById("exercise-summary");
+                const totalCalories = document.getElementById("total-calories");
+                const totalTime = document.getElementById("total-calories");
+                
+                let totalCalorieCount = 0;
+                let totalTimeCount = 0;
+            
+                mealForm.addEventListener("submit", function (event) {
+                    event.preventDefault();
+            
+                    let mealName = document.getElementById("meal-name").value;
+                    let mealCalories = parseInt(document.getElementById("meal-calories").value);
+            
+                    if (mealName && mealCalories) {
+                        // Add meal to summary list
+                        let listItem = document.createElement("li");
+                        listItem.textContent = `${mealName}: ${mealCalories} cal`;
+                        mealSummary.appendChild(listItem);
+            
+                        // Update total calories
+                        totalCalorieCount += mealCalories;
+                        totalCalories.textContent = totalCalorieCount;
+                        
+                        // Clear input fields
+                        document.getElementById("meal-name").value = "";
+                        document.getElementById("meal-calories").value = "";
+                    }
+                });
+            
+                exerciseForm.addEventListener("submit", function (event) {
+                    event.preventDefault();
+            
+                    let exerciseName = document.getElementById("exercise-name").value;
+                    let exerciseTime = parseInt(document.getElementById("exercise-time").value);
+            
+                    if (exerciseName && exerciseTime) {
+                        // Add meal to summary list
+                        let listItem = document.createElement("li");
+                        listItem.textContent = `${exerciseName}: ${exerciseTime} min`;
+                        exerciseSummary.appendChild(listItem);
+            
+                        // Update total calories
+                        totalTimeCount += exerciseTime;
+                        totalTime.textContent = totalTimeCount;
+                        
+                        // Clear input fields
+                        document.getElementById("exercise-name").value = "";
+                        document.getElementById("exercise-time").value = "";
+                    }
+                });
+            });
+        </script>
 
-    <script src="app.js"></script>
+    </div>
 </body>
 </html>

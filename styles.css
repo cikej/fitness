@@ -2,7 +2,11 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
+    background-color: turquoise;
+}
+
+div {
+    background-color: lightblue;
 }
 
 .container {
@@ -17,7 +21,9 @@ h1 {
 }
 
 h2 {
-    color: #444;
+    color: #934656;
+    font-family: 'Times New Roman', Times, serif;
+    border: #192891;
 }
 
 form {
