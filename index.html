@@ -10,44 +10,54 @@
     <div class="container">
         <h1>Fitness Tracker</h1>
 
-        <section id="meal-section">
-            <h2 style="color:Tomato;">Enter Calories</h2>
-            <form id="meal-section" action='insert.php' method='post'>
-                <label for="meal-name">Meal Name:</label>
-                <input type="text" id="meal-name" required><br>
-                <label for="meal-calories">Calories:</label>
-                <input type="number" id="meal-calories" required><br>
-                <button type="submit">Add Meal</button>
-            </form>
-        </section>
+        <div id="sections-container">
+            <section id="meal-section">
+                <h2>Enter Calories</h2>
+                <form id="meal-section" action='insert.php' method='post'>
+                    <label for="meal-name">Meal Name:</label>
+                    <input type="text" id="meal-name" required><br>
+                    <label for="meal-calories">Calories:</label>
+                    <input type="number" id="meal-calories" required><br>
+                    <button type="submit">Add Meal</button>
+                </form>
+            </section>
 
-        <section id="exercise-section">
-            <h2>Enter Exercise</h2>
-            <form id="exercise-form" action='insert.php' method='post'>
-                <label for="exercise-name">Exercise Name:</label>
-                <input type="text" id="exercise-name" required><br>
-                <label for="exercise-time">Time (in minutes):</label>
-                <input type="number" id="exercise-time" required><br>
-                <button type="submit">Add Exercise</button>
-            </form>
-        </section>
+            <section id="exercise-section">
+                <h2>Enter Exercise</h2>
+                <form id="exercise-form" action='insert.php' method='post'>
+                    <label for="exercise-name">Exercise Name:</label>
+                    <input type="text" id="exercise-name" required><br>
+                    <label for="exercise-time">Time (in minutes):</label>
+                    <input type="number" id="exercise-time" required><br>
+                    <button type="submit">Add Exercise</button>
+                </form>
+            </section>
+        </div>
 
         <section id="summary-section">
             <h2>Summary</h2>
-            
-            <h3>Meals Summary</h3>
-            <ul id="meal-summary"></ul>
-            
-            <h3>Exercise Summary</h3>
-            <ul id="exercise-summary"></ul>
         
-            <h3>Total Calories</h3>
-            <p id="total-calories">0</p>
-
-            <h3>Total Time</h3>
-            <p id="total-time">0</p>
+            <div id="summary-container">
+                <div class="summary-box">
+                    <h3>Meals Summary</h3>
+                    <ul id="meal-summary"></ul>
+                </div>
         
-            <input type='submit' value='Add data'>
+                <div class="summary-box">
+                    <h3>Exercise Summary</h3>
+                    <ul id="exercise-summary"></ul>
+                </div>
+        
+                <div class="summary-box">
+                    <h3>Total Calories</h3>
+                    <p id="total-calories">0</p>
+        
+                    <h3>Total Time</h3>
+                    <p id="total-time">0</p>
+                </div>
+            </div>
+        
+            <input type="submit" style="margin: auto;" value="Add data">
         </section>
 
         <script>
@@ -57,10 +67,27 @@
                 const mealSummary = document.getElementById("meal-summary");
                 const exerciseSummary = document.getElementById("exercise-summary");
                 const totalCalories = document.getElementById("total-calories");
-                const totalTime = document.getElementById("total-calories");
+                const totalTime = document.getElementById("total-time");
                 
                 let totalCalorieCount = 0;
                 let totalTimeCount = 0;
+
+                /*function createDeleteButton(item, calorieCount = 0) {
+                    let deleteBtn = document.createElement("button");
+                    deleteBtn.textContent = "❌";
+                    deleteBtn.style.marginLeft = "10px";
+                    deleteBtn.style.cursor = "pointer";
+
+                    deleteBtn.addEventListener("click", function () {
+                        item.remove();
+                        if (calorieCount) {
+                            totalCalorieCount -= calorieCount;
+                            totalCalories.textContent = totalCalorieCount;
+                        }
+                    });
+
+                    return deleteBtn;
+                }*/
             
                 mealForm.addEventListener("submit", function (event) {
                     event.preventDefault();

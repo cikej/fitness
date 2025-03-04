@@ -2,7 +2,21 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: turquoise;
+    background-color: rgb(149, 255, 248);
+    height: 90%;
+}
+
+#sections-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+#meal-section, #exercise-section {
+    width: 48%;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
 }
 
 div {
@@ -10,9 +24,9 @@ div {
 }
 
 .container {
-    width: 60%;
+    width: 90%;
     margin: auto;
-    padding: 20px;
+    padding: 30px;
 }
 
 h1 {
@@ -36,7 +50,7 @@ label {
 }
 
 input {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin-top: 5px;
 }
@@ -63,4 +77,19 @@ button:hover {
 
 #summary-output {
     padding-top: 10px;
+}
+
+#summary-container {
+    display: flex;
+    justify-content: space-between; /* Even spacing */
+    gap: 20px; /* Adds space between columns */
+}
+
+.summary-box {
+    flex: 1; /* Ensures equal width */
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    text-align: center;
+    background-color: #f9f9f9;
 }
