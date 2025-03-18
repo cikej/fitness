@@ -57,7 +57,7 @@
                 </div>
             </div>
         
-            <input type="submit" style="margin: auto;" value="Add data">
+            <input type="submit" value="Add data">
         </section>
 
         <script>
@@ -71,23 +71,6 @@
                 
                 let totalCalorieCount = 0;
                 let totalTimeCount = 0;
-
-                /*function createDeleteButton(item, calorieCount = 0) {
-                    let deleteBtn = document.createElement("button");
-                    deleteBtn.textContent = "❌";
-                    deleteBtn.style.marginLeft = "10px";
-                    deleteBtn.style.cursor = "pointer";
-
-                    deleteBtn.addEventListener("click", function () {
-                        item.remove();
-                        if (calorieCount) {
-                            totalCalorieCount -= calorieCount;
-                            totalCalories.textContent = totalCalorieCount;
-                        }
-                    });
-
-                    return deleteBtn;
-                }*/
             
                 mealForm.addEventListener("submit", function (event) {
                     event.preventDefault();

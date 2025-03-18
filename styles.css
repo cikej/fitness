@@ -56,16 +56,17 @@ input {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #0000FF;
     color: white;
     padding: 10px 20px;
     border: none;
+    border-radius: 3px;
     margin-top: 10px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #00F0FF;
 }
 
 #summary-section {
@@ -81,14 +82,15 @@ button:hover {
 
 #summary-container {
     display: flex;
-    justify-content: space-between; /* Even spacing */
-    gap: 20px; /* Adds space between columns */
+    justify-content: space-between;
+    gap: 20px;
+    background-color: #ffffff;
 }
 
 .summary-box {
-    flex: 1; /* Ensures equal width */
+    flex: 1;
     padding: 15px;
-    border: 1px solid #ccc;
+    border: 3px solid #ccc;
     border-radius: 50px;
     text-align: center;
     background-color: #f9f9f9;
