@@ -17,6 +17,7 @@ body {
     background-color: white;
     padding: 15px;
     border-radius: 8px;
+    border: 3px solid rgb(47, 47, 143);
 }
 
 div {
@@ -78,7 +79,7 @@ button:hover {
     margin-top: 40px;
     padding: 20px;
     background-color: #ffffff;
-    border: 1px solid #ddd;
+    border: 3px solid rgb(47, 47, 143);
     border-radius: 8px;
 }
 
