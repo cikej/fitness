@@ -57,7 +57,7 @@
                 </div>
             </div>
         
-            <input type="submit" value="Add data">
+            <button type="submit">Add Data to Table</button>
         </section>
 
         <script>
@@ -81,6 +81,20 @@
                     if (mealName && mealCalories) {
                         let listItem = document.createElement("li");
                         listItem.textContent = `${mealName}: ${mealCalories} cal`;
+
+                        let removeButton = document.createElement("button");
+                        removeButton.textContent = "X";
+                        removeButton.style.marginLeft = "10px";
+                        removeButton.style.padding = "5px 5px";
+                        removeButton.style.backgroundColor = "#FF0000";
+                        removeButton.style.borderRadius = "10px";
+                        removeButton.addEventListener("click", function () {
+                            mealSummary.removeChild(listItem);
+                            totalCalorieCount -= mealCalories;
+                            totalCalories.textContent = totalCalorieCount;
+                        });
+
+                        listItem.appendChild(removeButton);
                         mealSummary.appendChild(listItem);
             
                         totalCalorieCount += mealCalories;
@@ -100,6 +114,20 @@
                     if (exerciseName && exerciseTime) {
                         let listItem = document.createElement("li");
                         listItem.textContent = `${exerciseName}: ${exerciseTime} min`;
+
+                        let removeButton = document.createElement("button");
+                        removeButton.textContent = "X";
+                        removeButton.style.marginLeft = "10px";
+                        removeButton.style.padding = "5px 5px";
+                        removeButton.style.backgroundColor = "#FF0000";
+                        removeButton.style.borderRadius = "10px";
+                        removeButton.addEventListener("click", function () {
+                            exerciseSummary.removeChild(listItem);
+                            totalExerciseTime -= exerciseTime;
+                            totalTimeCount.textContent = totalExerciseTime;
+                        });
+
+                        listItem.appendChild(removeButton);
                         exerciseSummary.appendChild(listItem);
             
                         totalTimeCount += exerciseTime;

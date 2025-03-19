@@ -27,6 +27,11 @@ div {
     width: 90%;
     margin: auto;
     padding: 30px;
+    border: 5px solid rgb(47, 47, 143);
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -35,8 +40,8 @@ h1 {
 }
 
 h2 {
-    color: #985677;
-    font-family: 'Times New Roman', Times, serif;
+    color: #192891;
+    font-family: 'Arial', Times, serif;
     border: #192891;
 }
 
@@ -74,6 +79,7 @@ button:hover {
     padding: 20px;
     background-color: #ffffff;
     border: 1px solid #ddd;
+    border-radius: 8px;
 }
 
 #summary-output {
