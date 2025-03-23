@@ -13,7 +13,7 @@
         <div id="sections-container">
             <section id="meal-section">
                 <h2>Enter Calories</h2>
-                <form id="meal-section" action='insert.php' method='post'>
+                <form id="meal-section">
                     <label for="meal-name">Meal Name:</label>
                     <input type="text" id="meal-name" required><br>
                     <label for="meal-calories">Calories:</label>
@@ -24,7 +24,7 @@
 
             <section id="exercise-section">
                 <h2>Enter Exercise</h2>
-                <form id="exercise-form" action='insert.php' method='post'>
+                <form id="exercise-form">
                     <label for="exercise-name">Exercise Name:</label>
                     <input type="text" id="exercise-name" required><br>
                     <label for="exercise-time">Time (in minutes):</label>
@@ -123,8 +123,8 @@
                         removeButton.style.borderRadius = "10px";
                         removeButton.addEventListener("click", function () {
                             exerciseSummary.removeChild(listItem);
-                            totalExerciseTime -= exerciseTime;
-                            totalTimeCount.textContent = totalExerciseTime;
+                            totalTimeCount -= exerciseTime;
+                            totalTime.textContent = totalTimeCount;
                         });
 
                         listItem.appendChild(removeButton);
