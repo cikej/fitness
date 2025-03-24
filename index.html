@@ -138,6 +138,35 @@
                     }
                 });
             });
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const saveButton = document.querySelector("#summary-section button");
+
+                saveButton.addEventListener("click", function () {
+                    const date = new Date().toISOString().split("T")[0]; // Get today's date
+                    const meals = Array.from(document.querySelectorAll("#meal-summary li")).map(li => li.textContent.replace("X", "").trim());
+                    const exercises = Array.from(document.querySelectorAll("#exercise-summary li")).map(li => li.textContent.replace("X", "").trim());
+                    const totalCalories = document.getElementById("total-calories").textContent;
+                    const totalTime = document.getElementById("total-time").textContent;
+
+                    fetch("http://localhost:3000/save-summary", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ date, meals, exercises, totalCalories, totalTime })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            alert("Summary saved successfully!");
+                        } else {
+                            alert("Failed to save summary.");
+                        }
+                    })
+                    .catch(error => console.error("Error:", error));
+                });
+            });
         </script>
 
     </div>

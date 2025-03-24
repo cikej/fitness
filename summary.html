@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retrieve Summary</title>
+</head>
+<body>
+    <h1>Retrieve Summary</h1>
+    <label for="summary-date">Select Date:</label>
+    <input type="date" id="summary-date">
+    <button id="fetch-summary">Get Summary</button>
+
+    <h2>Meals</h2>
+    <ul id="meal-summary"></ul>
+
+    <h2>Exercises</h2>
+    <ul id="exercise-summary"></ul>
+
+    <h2>Total Calories</h2>
+    <p id="total-calories">0</p>
+
+    <h2>Total Time</h2>
+    <p id="total-time">0</p>
+
+    <script>
+        document.getElementById("fetch-summary").addEventListener("click", function () {
+            const date = document.getElementById("summary-date").value;
+
+            if (!date) {
+                alert("Please select a date.");
+                return;
+            }
+
+            fetch(`http://localhost:3000/get-summary/${date}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    alert(data.message);
+                    return;
+                }
+
+                document.getElementById("meal-summary").innerHTML = data.meals.map(meal => `<li>${meal}</li>`).join("");
+                document.getElementById("exercise-summary").innerHTML = data.exercises.map(exercise => `<li>${exercise}</li>`).join("");
+                document.getElementById("total-calories").textContent = data.totalCalories;
+                document.getElementById("total-time").textContent = data.totalTime;
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    </script>
+</body>
+</html>
