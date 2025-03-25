@@ -57,7 +57,7 @@
                 </div>
             </div>
         
-            <button type="submit">Add Data to Table</button>
+            <button id="save-summary">Add Data to Table</button>
         </section>
 
         <script>
@@ -140,14 +140,19 @@
             });
 
             document.addEventListener("DOMContentLoaded", function () {
-                const saveButton = document.querySelector("#summary-section button");
+                const saveButton = document.getElementById("save-summary");
 
                 saveButton.addEventListener("click", function () {
-                    const date = new Date().toISOString().split("T")[0]; // Get today's date
+                    const date = new Date().toISOString().split("T")[0];
                     const meals = Array.from(document.querySelectorAll("#meal-summary li")).map(li => li.textContent.replace("X", "").trim());
                     const exercises = Array.from(document.querySelectorAll("#exercise-summary li")).map(li => li.textContent.replace("X", "").trim());
-                    const totalCalories = document.getElementById("total-calories").textContent;
-                    const totalTime = document.getElementById("total-time").textContent;
+                    const totalCalories = parseInt(document.getElementById("total-calories").textContent);
+                    const totalTime = parseInt(document.getElementById("total-time").textContent);
+
+                    if (meals.length === 0 && exercises.length === 0) {
+                        alert("Please add at least one meal or exercise before saving.");
+                        return;
+                    }
 
                     fetch("http://localhost:3000/save-summary", {
                         method: "POST",
@@ -164,7 +169,10 @@
                             alert("Failed to save summary.");
                         }
                     })
-                    .catch(error => console.error("Error:", error));
+                    .catch(error => {
+                        console.error("Error:", error);
+                        alert("Error saving summary.");
+                    });
                 });
             });
         </script>
